@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Code Wizard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <style>
+        .code-block {
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .file-tab {
+            transition: all 0.2s ease;
+        }
+        .file-tab:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="mb-8">
+            <h1 class="text-4xl font-bold text-indigo-700 flex items-center">
+                <i data-feather="zap" class="mr-3"></i> Gemini Code Wizard
+            </h1>
+            <p class="text-gray-600 mt-2">Generate complete projects with AI magic ✨</p>
+        </header>
+
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+            <div class="p-6 border-b border-gray-200">
+                <h2 class="text-xl font-semibold text-gray-800">Project Generator</h2>
+                <div class="mt-4">
+                    <textarea id="promptInput" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Describe your project requirements..."></textarea>
+                </div>
+                <div class="mt-4 flex justify-end">
+                    <button id="generateBtn" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center">
+                        <i data-feather="sparkles" class="mr-2"></i> Generate Code
+                    </button>
+                </div>
+            </div>
+
+            <div id="loadingIndicator" class="hidden p-6 border-b border-gray-200">
+                <div class="flex items-center space-x-2 text-indigo-600">
+                    <i data-feather="loader" class="animate-spin"></i>
+                    <span>Generating your project...</span>
+                </div>
+            </div>
+
+            <div id="outputContainer" class="hidden">
+                <div id="fileTabs" class="flex border-b border-gray-200 overflow-x-auto">
+                    <!-- File tabs will be added here dynamically -->
+                </div>
+                <div class="p-6">
+                    <pre id="codeOutput" class="code-block bg-gray-100 p-4 rounded-lg text-sm overflow-auto max-h-96"></pre>
+                </div>
+                <div class="p-4 border-t border-gray-200 flex justify-end">
+                    <button id="downloadBtn" class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition flex items-center">
+                        <i data-feather="download" class="mr-2"></i> Download Project
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+    </script>
+<script src="https://huggingface.co/deepsite/deepsite-badge.js"></script>
+</body>
+</html>
